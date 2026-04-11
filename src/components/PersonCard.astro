@@ -1,0 +1,153 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'people'>;
+}
+
+const { entry } = Astro.props;
+
+function getImagePath(path: string | undefined) {
+  if (path?.startsWith('/')) {
+    return import.meta.env.BASE_URL + path.substring(1);
+  }
+  return path;
+}
+
+function isValidEmail(email: string | undefined) {
+  if (!email) return false;
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+}
+
+const placeholderImage =
+  import.meta.env.BASE_URL + 'images/placeholder-person.jpg';
+const imgSrc = entry.data.photo
+  ? getImagePath(entry.data.photo)
+  : placeholderImage;
+
+const profileHref = `${import.meta.env.BASE_URL}people/${entry.slug}`;
+
+const cat = entry.data.category;
+const isPi = cat === 'pi';
+let deptLine = '';
+
+if (isPi) {
+  deptLine = entry.data.department ?? entry.data.title;
+}
+
+const emailOk = isValidEmail(entry.data.email);
+
+const showPiLinks =
+  cat === 'pi' &&
+  (entry.data.website ||
+    entry.data.googleScholar ||
+    entry.data.github);
+---
+
+<div
+  class="font-sans bg-white rounded-lg shadow-md p-3 sm:p-4 flex flex-col sm:flex-row gap-3 sm:gap-4 items-start"
+>
+  <div class="shrink-0 mx-auto sm:mx-0 w-24 h-24 sm:w-28 sm:h-28">
+    <img
+      src={imgSrc}
+      alt={entry.data.name}
+      class="w-full h-full object-cover rounded-lg bg-gray-100"
+      onerror={`this.src='${import.meta.env.BASE_URL}images/placeholder-person.jpg'; this.onerror=null;`}
+    />
+  </div>
+  <div class="min-w-0 flex-1 flex flex-col gap-1 text-sm">
+    <h3 class="text-base font-bold text-primary font-sans leading-tight">
+      {entry.data.name}
+    </h3>
+
+    {isPi && deptLine ? (
+      <div class="text-gray-600 text-xs sm:text-sm leading-snug">
+        <p>{deptLine}</p>
+      </div>
+    ) : null}
+
+    {emailOk && (
+      <p class="flex items-center gap-1.5 mt-0.5">
+        <svg
+          class="shrink-0 w-4 h-4 text-primary-light"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+        <a
+          href={`mailto:${entry.data.email}`}
+          class="text-primary-light hover:underline break-all"
+        >
+          {entry.data.email}
+        </a>
+      </p>
+    )}
+
+    {isPi && (
+      <div class="mt-auto pt-2 flex flex-col gap-1.5">
+        <a
+          href={profileHref}
+          class="inline-flex items-center gap-1 text-primary-light font-medium hover:underline w-fit"
+        >
+          Read More
+          <svg
+            class="w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+
+        {showPiLinks && (
+          <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-primary-light">
+            {entry.data.website && (
+              <a
+                href={entry.data.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+              >
+                Website
+              </a>
+            )}
+            {entry.data.googleScholar && (
+              <a
+                href={entry.data.googleScholar}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+              >
+                Google Scholar
+              </a>
+            )}
+            {entry.data.github && (
+              <a
+                href={entry.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+              >
+                GitHub
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+</div>

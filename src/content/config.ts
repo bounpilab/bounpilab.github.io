@@ -52,6 +52,7 @@ const peopleCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     title: z.string(),
+    department: z.string().optional(),
     photo: z.string().optional(),
     bio: z.string().optional(),
     research: z.string().optional(),
@@ -64,6 +65,7 @@ const peopleCollection = defineCollection({
     degree: z.string().optional(),
     graduationYear: z.number().optional(),
     currentPosition: z.string().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 

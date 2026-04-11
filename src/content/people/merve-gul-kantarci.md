@@ -3,7 +3,6 @@ name: "Merve Gül Kantarcı"
 title: "Alumnus"
 photo: "/images/people/batuhan-baykara.jpg"
 bio: "PILAB alumnus who worked under the supervision of Tunga Güngör."
-email: "batuhan.baykara@alumni.boun.edu.tr"
 category: "alumni"
 order: 51
 advisor: "."
