@@ -111,18 +111,6 @@ const highlightsCollection = defineCollection({
   }),
 });
 
-// Define the schema for the resources collection
-const resourcesCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    image: z.string(),
-    link: z.string().url(),
-    order: z.number().optional(),
-  }),
-});
-
 // Export the collections
 export const collections = {
   'papers': papersCollection,
@@ -132,5 +120,4 @@ export const collections = {
   'theses': thesesCollection,
   'courses': coursesCollection,
   'highlights': highlightsCollection,
-  'resources': resourcesCollection,
 }; 
