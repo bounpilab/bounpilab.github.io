@@ -1,0 +1,363 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import { format } from 'date-fns';
+
+// Get featured papers
+const papers = await getCollection('papers', (paper) => paper.data.featured === true);
+papers.sort((a, b) => b.data.year - a.data.year);
+const featuredPapers = papers.slice(0, 3);
+
+// Get featured projects
+const projects = await getCollection('projects', (project) => project.data.featured === true);
+projects.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+const featuredProjects = projects.slice(0, 3);
+
+// Get latest news
+const news = await getCollection('news');
+news.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const latestNews = news.slice(0, 3);
+
+// Get highlights
+const highlights = await getCollection('highlights');
+highlights.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+
+// Helper function to get proper image path with base URL
+function getImagePath(path: string) {
+  if (path.startsWith('http')) return path;
+  if (path.startsWith('/')) {
+    return import.meta.env.BASE_URL + path.substring(1);
+  }
+  return path;
+}
+
+// Format date function
+function formatDate(date) {
+  return format(new Date(date), 'MMMM d, yyyy');
+}
+---
+
+<MainLayout title="PILAB - Perceptual Intelligence Laboratory">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-5xl font-bold mb-4">PILAB</h1>
+        <p class="text-2xl mb-6">Perceptual Intelligence Laboratory</p>
+
+        <p class="text-xl mb-10">
+          We advance the frontiers of computer vision, biometrics, and 3D visual understanding.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="/projects"
+            class="bg-white text-primary font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            Our Projects
+          </a>
+          <a
+            href="/papers"
+            class="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg hover:bg-white/10 transition-colors"
+          >
+            Research Papers
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+          Welcome to PILAB
+        </h2>
+
+        <p class="text-lg text-gray-800 text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+          PILAB is a research group at Bogazici University focused on developing novel methods
+          in computer vision, biometrics, and 3D visual understanding.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Computer Vision column */}
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">
+                Computer Vision
+              </h3>
+              <p class="text-gray-800 leading-relaxed">
+                We research visual recognition, image understanding, object detection, and scene
+                analysis, with applications in autonomous systems and visual AI.
+              </p>
+            </div>
+          </div>
+
+          {/* Biometrics column */}
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4" />
+                <path d="M5 19.5C5.5 18 6 15 6 12c0-.7.12-1.37.34-2" />
+                <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+                <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+                <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+                <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+                <path d="M2 16h.01" />
+                <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+                <path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">
+                Biometrics
+              </h3>
+              <p class="text-gray-800 leading-relaxed">
+                We develop methods for face recognition, person re-identification, and
+                biometric authentication using deep learning techniques.
+              </p>
+            </div>
+          </div>
+
+          {/* 3D Computer Vision column */}
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3l9 5v8l-9 5-9-5V8l9-5z" />
+                <path d="M12 3v10" />
+                <path d="M3 8l9 5" />
+                <path d="M21 8l-9 5" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">
+                3D Computer Vision
+              </h3>
+              <p class="text-gray-800 leading-relaxed">
+                We work on 3D reconstruction, depth estimation, and geometric understanding
+                of visual data to bridge the gap between 2D imagery and 3D scenes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-lg text-gray-800 text-center mt-10 leading-relaxed">
+          Our research combines deep learning with geometric and perceptual principles to build
+          robust, real-world visual intelligence systems.
+        </p>
+
+        <!-- Highlights -->
+        <h3 class="text-2xl font-bold text-primary mt-12 mb-8 text-center">Highlights</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {highlights.map(item => (
+            <a
+              href={item.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+            >
+              <div class="bg-gray-100 h-40 flex items-center justify-center p-4">
+                <img
+                  src={getImagePath(item.data.image)}
+                  alt={item.data.title}
+                  class="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <div class="p-4">
+                <h4 class="text-lg font-semibold text-primary mb-1">{item.data.title}</h4>
+                <p class="text-gray-700 text-sm">{item.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Featured Projects
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-primary mb-12 text-center">Featured Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {featuredProjects.map(project => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              {project.data.image ? (
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="w-full h-full object-cover"
+                  onerror="this.src='/boun-tabi-dev/images/placeholder.jpg'"
+                />
+              ) : (
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <span class="text-gray-400">No image available</span>
+                </div>
+              )}
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-primary mb-2">
+                <a href={`/projects/${project.slug}`} class="hover:underline">
+                  {project.data.title}
+                </a>
+              </h3>
+              <p class="text-gray-700 mb-4">{project.data.description}</p>
+              <a
+                href={`/projects/${project.slug}`}
+                class="text-primary-light hover:underline"
+              >
+                Learn more →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/projects" class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary-dark transition-colors">
+          View All Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <!--
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-primary mb-12 text-center">Latest News</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {latestNews.map(item => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              {item.data.image ? (
+                <img
+                  src={item.data.image}
+                  alt={item.data.title}
+                  class="w-full h-full object-cover"
+                  onerror="this.src='/boun-tabi-dev/images/placeholder.jpg'"
+                />
+              ) : (
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <span class="text-gray-400">No image available</span>
+                </div>
+              )}
+            </div>
+            <div class="p-6">
+              <p class="text-gray-600 mb-2">{formatDate(item.data.date)}</p>
+              <h3 class="text-xl font-semibold text-primary mb-4">
+                <a href={`/news/${item.slug}`} class="hover:underline">
+                  {item.data.title}
+                </a>
+              </h3>
+              <a
+                href={`/news/${item.slug}`}
+                class="text-primary-light hover:underline"
+              >
+                Read more →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/news" class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary-dark transition-colors">
+          View All News
+        </a>
+      </div>
+    </div>
+  </section>-->
+
+
+  <!-- Recent Publications -->
+  <!--
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-primary mb-12 text-center">Recent Publications</h2>
+      <div class="max-w-4xl mx-auto space-y-8">
+        {featuredPapers.map(paper => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-primary mb-2">
+              <a href={`/papers/${paper.slug}`} class="hover:underline">
+                {paper.data.title}
+              </a>
+            </h3>
+            <p class="text-gray-700 mb-2">{paper.data.authors}</p>
+            <p class="text-gray-600 italic mb-4">{paper.data.venue}</p>
+            <div class="flex flex-wrap gap-4">
+              {paper.data.pdf && (
+                <a
+                  href={paper.data.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-primary-light hover:underline"
+                >
+                  <span>PDF</span>
+                </a>
+              )}
+              {paper.data.code && (
+                <a
+                  href={paper.data.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-primary-light hover:underline"
+                >
+                  <span>Code</span>
+                </a>
+              )}
+              <a
+                href={`/papers/${paper.slug}`}
+                class="inline-flex items-center text-primary-light hover:underline"
+              >
+                <span>Read More</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/papers" class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary-dark transition-colors">
+          View All Publications
+        </a>
+      </div>
+    </div>
+  </section>
+  -->
+</MainLayout>
