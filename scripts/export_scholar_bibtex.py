@@ -188,7 +188,8 @@ def make_bibtex(pub_full: dict, idx: int, pub: dict) -> tuple[str, bool, list[st
         last_name = "anon"
 
     base_key = f"{last_name}{year}" if year else last_name
-    key = f"{base_key}_{slugify(title)[:10]}"
+    # bibtex-parse-js treats '-' inside keys as minus; avoid hyphens in keys
+    key = f"{base_key}_{slugify(title)[:10]}".replace("-", "_")
 
     # ---- Collect fields ----
     fields = {

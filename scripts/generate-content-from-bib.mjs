@@ -256,18 +256,30 @@ function writePaperMarkdown(filePath, frontmatter) {
 }
 
 /**
+ * Remove full-line % comments (Scholar export comments-out invalid entries).
+ * bibtex-parse-js does not reliably skip those blocks.
+ */
+function stripBibFullLineComments(source) {
+  return source
+    .split('\n')
+    .filter((line) => !/^\s*%/.test(line))
+    .join('\n');
+}
+
+/**
  * Process a single BibTeX file for papers
  */
 function processBibFileForPapers(bibFilePath) {
   console.log(`\nProcessing: ${path.relative(rootDir, bibFilePath)}`);
   
-  const content = fs.readFileSync(bibFilePath, 'utf8');
+  const raw = fs.readFileSync(bibFilePath, 'utf8');
+  const content = stripBibFullLineComments(raw);
   let entries;
   
   try {
     entries = toJSON(content);
   } catch (error) {
-    console.error(`Error parsing ${bibFilePath}:`, error.message);
+    console.error(`Error parsing ${bibFilePath}:`, error?.message || String(error));
     return;
   }
   
