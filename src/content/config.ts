@@ -89,10 +89,10 @@ const coursesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     code: z.string(),
-    description: z.string(),
-    semester: z.string(),
     instructor: z.string(),
-    credits: z.number(),
+    description: z.string().optional(),
+    semester: z.string().optional(),
+    credits: z.number().optional(),
     syllabus: z.string().url().optional(),
     materials: z.string().url().optional(),
     featured: z.boolean().optional().default(false),
