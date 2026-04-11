@@ -1,6 +1,6 @@
 # Scripts
 
-This directory contains utility scripts for managing the TABILAB website.
+This directory contains utility scripts for managing the PILAB website.
 
 ## generate-content-from-bib.mjs
 
