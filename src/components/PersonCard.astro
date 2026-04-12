@@ -30,9 +30,11 @@ const profileHref = `${import.meta.env.BASE_URL}people/${entry.slug}`;
 const cat = entry.data.category;
 const isPi = cat === 'pi';
 let deptLine = '';
+let titleLine = '';
 
 if (isPi) {
-  deptLine = entry.data.department ?? entry.data.title;
+  titleLine = entry.data.title ?? '';
+  deptLine = entry.data.department ?? '';
 }
 
 const emailOk = isValidEmail(entry.data.email);
@@ -59,6 +61,12 @@ const showPiLinks =
     <h3 class="text-base font-bold text-primary font-sans leading-tight">
       {entry.data.name}
     </h3>
+
+    {isPi && titleLine ? (
+      <div class="text-gray-700 font-medium text-xs sm:text-sm leading-snug">
+        <p>{titleLine}</p>
+      </div>
+    ) : null}
 
     {isPi && deptLine ? (
       <div class="text-gray-600 text-xs sm:text-sm leading-snug">
