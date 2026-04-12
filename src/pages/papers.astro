@@ -25,7 +25,7 @@ const defaultYear = years[0];
   <div class="container mx-auto px-4 py-12">
     <h1 class="text-4xl font-bold text-primary mb-12 text-center">Publications</h1>
 
-    <div id="papers-year-filter">
+    <div id="papers-year-filter" class="max-w-5xl mx-auto">
       <div
         class="flex flex-wrap justify-center gap-2 mb-10"
         role="tablist"
@@ -62,30 +62,24 @@ const defaultYear = years[0];
           <h2 class="text-3xl font-bold text-gray-900 mb-6" id={`year-heading-${year}`}>
             {year}
           </h2>
-          <div class="space-y-8">
+          <div class="space-y-6">
             {papersByYear[year].map((paper) => (
-              <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold text-primary mb-2">
-                  <a href={`/papers/${paper.slug}`} class="hover:underline">
-                    {paper.data.title}
-                  </a>
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col">
+                <h3 class="text-lg text-gray-800 mb-3">
+                  {paper.data.title}
                 </h3>
-                <p class="text-gray-700 mb-2">{paper.data.authors}</p>
-                <p class="text-gray-600 italic mb-4">{paper.data.venue}</p>
+                <p class="text-sm text-gray-700 mb-1"><span class="font-semibold">Conference:</span> {paper.data.venue} {year}</p>
+                <p class="text-sm text-gray-700 mb-6"><span class="font-semibold">Authors:</span> {paper.data.authors}</p>
 
-                <div class="mb-4">
-                  <p class="text-gray-700">{paper.data.abstract}</p>
-                </div>
-
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-2 justify-end mt-auto">
                   {paper.data.pdf && (
                     <a
                       href={paper.data.pdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center text-primary-light hover:underline"
+                      class="inline-flex items-center px-4 py-1.5 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 transition-colors"
                     >
-                      <span>PDF</span>
+                      PDF <span class="ml-1 text-xs">📄</span>
                     </a>
                   )}
 
@@ -94,18 +88,29 @@ const defaultYear = years[0];
                       href={paper.data.code}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center text-primary-light hover:underline"
+                      class="inline-flex items-center px-4 py-1.5 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 transition-colors"
                     >
-                      <span>Code</span>
+                      Code <span class="ml-1 text-xs">🔍</span>
                     </a>
                   )}
 
                   <a
                     href={`/papers/${paper.slug}`}
-                    class="inline-flex items-center text-primary-light hover:underline"
+                    class="inline-flex items-center px-4 py-1.5 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 transition-colors"
                   >
-                    <span>Read More</span>
+                    See Abstract
                   </a>
+
+                  {paper.data.url && (
+                    <a
+                      href={paper.data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center px-4 py-1.5 bg-gray-500 text-white text-sm rounded hover:bg-gray-600 transition-colors"
+                    >
+                      Paper <span class="ml-1 text-xs">📄</span>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

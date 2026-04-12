@@ -11,7 +11,7 @@ const papersCollection = defineCollection({
     abstract: z.string(),
     pdf: z.string().url().optional(),
     code: z.string().url().optional(),
-    bibtex: z.string().optional(),
+    url: z.string().url().optional(),
     tags: z.array(z.string()).optional(),
     featured: z.boolean().optional().default(false),
   }),

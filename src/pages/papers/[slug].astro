@@ -58,46 +58,10 @@ const content = marked.parse(paper.body);
               <span>Code</span>
             </a>
           )}
-          
-          {paper.data.bibtex && (
-            <button 
-              class="inline-flex items-center text-primary-light hover:underline bibtex-toggle"
-              id="bibtex-toggle"
-            >
-              Show BibTeX
-            </button>
-          )}
         </div>
-        
-        {paper.data.bibtex && (
-          <div id="bibtex-container" class="hidden mb-8">
-            <h2 class="text-xl font-semibold mb-2">BibTeX</h2>
-            <pre class="bg-gray-100 p-4 rounded-md overflow-x-auto text-sm">{paper.data.bibtex}</pre>
-          </div>
-        )}
         
         <div class="prose max-w-none" set:html={content} />
       </article>
     </div>
   </div>
-</MainLayout>
-
-<script>
-  // Toggle BibTeX visibility
-  document.addEventListener('DOMContentLoaded', () => {
-    const bibtexToggle = document.getElementById('bibtex-toggle');
-    const bibtexContainer = document.getElementById('bibtex-container');
-    
-    if (bibtexToggle && bibtexContainer) {
-      bibtexToggle.addEventListener('click', () => {
-        if (bibtexContainer.classList.contains('hidden')) {
-          bibtexContainer.classList.remove('hidden');
-          bibtexToggle.textContent = 'Hide BibTeX';
-        } else {
-          bibtexContainer.classList.add('hidden');
-          bibtexToggle.textContent = 'Show BibTeX';
-        }
-      });
-    }
-  });
-</script> 
+</MainLayout> 
