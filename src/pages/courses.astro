@@ -1,9 +1,25 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 const courses = await getCollection('courses');
 courses.sort((a, b) => a.data.code.localeCompare(b.data.code));
+
+const coursesWithInstructors = await Promise.all(
+  courses.map(async (course) => {
+    const instructor = await getEntry(course.data.instructor);
+    return { ...course, instructorData: instructor?.data };
+  })
+);
+
+function shortenTitle(title?: string) {
+  if (!title) return '';
+  if (title === "Professor") return "Prof.";
+  if (title === "Assistant Professor") return "Asst. Prof.";
+  if (title === "Associate Professor") return "Assoc. Prof.";
+  return title;
+}
+
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -12,7 +28,7 @@ const base = import.meta.env.BASE_URL;
     <h1 class="text-4xl font-bold text-primary mb-12 text-center">Courses</h1>
 
     <div class="max-w-2xl mx-auto space-y-4">
-      {courses.map((course) => (
+      {coursesWithInstructors.map((course) => (
         <div class="bg-white rounded-lg shadow-md px-6 py-4 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div class="min-w-0 flex-1">
             <span class="text-sm font-medium text-primary">{course.data.code}</span>
@@ -25,7 +41,9 @@ const base = import.meta.env.BASE_URL;
               <p class="text-sm text-gray-600 mt-2 leading-relaxed">{course.data.description}</p>
             )}
           </div>
-          <p class="text-gray-600 sm:text-right sm:shrink-0">{course.data.instructor}</p>
+          <p class="text-gray-600 sm:text-right sm:shrink-0">
+            {course.instructorData ? `${shortenTitle(course.instructorData.title)} ${course.instructorData.name}` : ''}
+          </p>
         </div>
       ))}
     </div>

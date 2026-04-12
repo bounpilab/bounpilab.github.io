@@ -3,7 +3,7 @@ title: "Computer Vision"
 code: "CMPE 537"
 description: "Graduate computer vision: imaging and cameras, filtering and CNNs, segmentation, features, object and action recognition, motion, tracking, and 3D vision—with implementations and a term project."
 semester: "Fall 2025–2026"
-instructor: "Prof. Dr. Lale Akarun"
+instructor: "lale-akarun"
 credits: 3
 featured: true
 ---

@@ -3,7 +3,7 @@ title: "Deep Learning for Computer Vision"
 code: "CMPE 593"
 description: "Graduate course on applied deep learning for computer vision: convolutional networks, detection, segmentation, generative models, and vision transformers."
 semester: "Fall 2025–2026"
-instructor: "Prof. Dr. Berk Gökberk"
+instructor: "berk-gokberk"
 credits: 3
 syllabus: "https://registration.bogazici.edu.tr/scripts/instructor/coursedescriptions/2025-2026-1/CMPE59301.PDF"
 featured: true

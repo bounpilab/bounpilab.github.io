@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, reference, z } from 'astro:content';
 
 // Define the schema for the papers collection
 const papersCollection = defineCollection({
@@ -91,7 +91,7 @@ const coursesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     code: z.string(),
-    instructor: z.string(),
+    instructor: reference('people'),
     description: z.string().optional(),
     semester: z.string().optional(),
     credits: z.number().optional(),
