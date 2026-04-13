@@ -20,14 +20,14 @@ const PAPERS_DIR = path.join(rootDir, 'src', 'content', 'papers');
  */
 function findBibFiles(dir) {
   const bibFiles = [];
-  
+
   if (!fs.existsSync(dir)) {
     console.warn(`Warning: Directory ${dir} does not exist`);
     return bibFiles;
   }
-  
+
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  
+
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
@@ -36,7 +36,7 @@ function findBibFiles(dir) {
       bibFiles.push(fullPath);
     }
   }
-  
+
   return bibFiles;
 }
 
@@ -60,57 +60,57 @@ function slugify(text) {
  */
 function formatAuthors(authorString) {
   if (!authorString) return '';
-  
+
   // Split by 'and' keyword
   const authors = authorString.split(/\s+and\s+/i);
-  
+
   return authors.map(author => {
     // Remove extra whitespace
     author = author.trim();
-    
+
     // Handle LaTeX special characters
     // We need to be careful to preserve case, so handle uppercase and lowercase separately
-    
+
     // Turkish uppercase
     author = author.replace(/\{\\"\{U\}\}/g, 'Ü');
     author = author.replace(/\\"\{U\}/g, 'Ü');
     author = author.replace(/\\"U/g, 'Ü');
-    
+
     author = author.replace(/\{\\"\{O\}\}/g, 'Ö');
     author = author.replace(/\\"\{O\}/g, 'Ö');
     author = author.replace(/\\"O/g, 'Ö');
-    
+
     author = author.replace(/\{\{\\c\{S\}\}\}/g, 'Ş');
     author = author.replace(/\{\\c\{S\}\}/g, 'Ş');
     author = author.replace(/\\c\{S\}/g, 'Ş');
-    
+
     author = author.replace(/\{\\c\{C\}\}/g, 'Ç');
     author = author.replace(/\\c\{C\}/g, 'Ç');
-    
+
     // Turkish lowercase
     author = author.replace(/\{\\"\{u\}\}/g, 'ü');
     author = author.replace(/\\"\{u\}/g, 'ü');
     author = author.replace(/\\"u/g, 'ü');
-    
+
     author = author.replace(/\{\\"\{o\}\}/g, 'ö');
     author = author.replace(/\\"\{o\}/g, 'ö');
     author = author.replace(/\\"o/g, 'ö');
-    
+
     author = author.replace(/\{\{\\c\{s\}\}\}/g, 'ş');
     author = author.replace(/\{\\c\{s\}\}/g, 'ş');
     author = author.replace(/\\c\{s\}/g, 'ş');
-    
+
     author = author.replace(/\{\\c\{c\}\}/g, 'ç');
     author = author.replace(/\\c\{c\}/g, 'ç');
-    
+
     // Turkish dotless i and capital İ
     author = author.replace(/\{\\i\}/g, 'ı');
     author = author.replace(/\\i(?=\s|$|,)/g, 'ı');
-    
+
     // Remove remaining braces
     author = author.replace(/\{/g, '');
     author = author.replace(/\}/g, '');
-    
+
     // Handle "Last, First" format
     if (author.includes(',')) {
       const parts = author.split(',').map(p => p.trim());
@@ -118,7 +118,7 @@ function formatAuthors(authorString) {
         return `${parts[1]} ${parts[0]}`;
       }
     }
-    
+
     return author;
   }).join(', ');
 }
@@ -128,7 +128,7 @@ function formatAuthors(authorString) {
  */
 function extractTags(keywords) {
   if (!keywords) return [];
-  
+
   return keywords
     .split(/[,;]\s*/)
     .map(tag => tag.trim())
@@ -149,12 +149,12 @@ function formatBibtex(entry, originalContent) {
   // Try to extract the original entry from the file content
   const escapedType = escapeRegex(entry.entryType);
   const escapedKey = escapeRegex(entry.citationKey);
-  
+
   // Match the entry up to the next @ or end of string
   // This handles most common cases while avoiding issues with @ in field values
   const entryRegex = new RegExp(`@${escapedType}\\{${escapedKey}[^]*?(?=\\n@|$)`, 'i');
   const match = originalContent.match(entryRegex);
-  
+
   if (match) {
     // Clean up and format the entry
     let bibtexEntry = match[0].trim();
@@ -164,15 +164,15 @@ function formatBibtex(entry, originalContent) {
     }
     return bibtexEntry;
   }
-  
+
   // Fallback: reconstruct the entry
   let bibtex = `@${entry.entryType}{${entry.citationKey}`;
   const tags = entry.entryTags || {};
-  
+
   for (const [key, value] of Object.entries(tags)) {
     bibtex += `,\n  ${key}={${value}}`;
   }
-  
+
   bibtex += '\n}';
   return bibtex;
 }
@@ -182,18 +182,19 @@ function formatBibtex(entry, originalContent) {
  */
 function generatePaperFrontmatter(entry, originalContent) {
   const tags = entry.entryTags || {};
-  
+
   const frontmatter = {
     title: tags.title || '',
     authors: formatAuthors(tags.author || ''),
     year: parseInt(tags.year) || 0,
     venue: tags.journal || tags.booktitle || tags.publisher || '',
     abstract: tags.abstract || '',
+    url: tags.url || '',
     featured: tags.featured === 'true' || tags.featured === '{true}' || false,
     tags: extractTags(tags.keywords || ''),
     bibtex: formatBibtex(entry, originalContent)
   };
-  
+
   return frontmatter;
 }
 
@@ -202,7 +203,7 @@ function generatePaperFrontmatter(entry, originalContent) {
  */
 function escapeYamlString(str) {
   if (!str) return '';
-  
+
   // Escape backslashes first
   str = str.replace(/\\/g, '\\\\');
   // Escape double quotes
@@ -213,7 +214,7 @@ function escapeYamlString(str) {
   str = str.replace(/\r/g, '\\r');
   // Escape tabs
   str = str.replace(/\t/g, '\\t');
-  
+
   return str;
 }
 
@@ -222,34 +223,37 @@ function escapeYamlString(str) {
  */
 function writePaperMarkdown(filePath, frontmatter) {
   let content = '---\n';
-  
+
   // Write string fields with quotes
   content += `title: "${escapeYamlString(frontmatter.title)}"\n`;
   content += `authors: "${escapeYamlString(frontmatter.authors)}"\n`;
   content += `venue: "${escapeYamlString(frontmatter.venue)}"\n`;
   content += `year: ${frontmatter.year}\n`;
   content += `abstract: "${escapeYamlString(frontmatter.abstract)}"\n`;
-  
+  if (frontmatter.url) {
+    content += `url: "${escapeYamlString(frontmatter.url)}"\n`;
+  }
+
   // Write tags array
   if (frontmatter.tags && frontmatter.tags.length > 0) {
     content += `tags: [${frontmatter.tags.map(t => `"${escapeYamlString(t)}"`).join(', ')}]\n`;
   }
-  
+
   // Write featured boolean
   content += `featured: ${frontmatter.featured}\n`;
-  
+
   // Write bibtex with pipe notation
   content += `bibtex: |\n`;
   const bibtexLines = frontmatter.bibtex.split('\n');
   bibtexLines.forEach(line => {
     content += `  ${line}\n`;
   });
-  
+
   content += '---\n';
-  
+
   // Ensure directory exists
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  
+
   // Write file
   fs.writeFileSync(filePath, content, 'utf8');
   console.log(`✓ Generated: ${path.relative(rootDir, filePath)}`);
@@ -271,41 +275,41 @@ function stripBibFullLineComments(source) {
  */
 function processBibFileForPapers(bibFilePath) {
   console.log(`\nProcessing: ${path.relative(rootDir, bibFilePath)}`);
-  
+
   const raw = fs.readFileSync(bibFilePath, 'utf8');
   const content = stripBibFullLineComments(raw);
   let entries;
-  
+
   try {
     entries = toJSON(content);
   } catch (error) {
     console.error(`Error parsing ${bibFilePath}:`, error?.message || String(error));
     return;
   }
-  
+
   if (!entries || entries.length === 0) {
     console.log('  No entries found');
     return;
   }
-  
+
   console.log(`  Found ${entries.length} entries`);
-  
+
   // Publication entry types
   const publicationTypes = [
-    'article', 'inproceedings', 'incollection', 'inbook', 
+    'article', 'inproceedings', 'incollection', 'inbook',
     'conference', 'book', 'phdthesis', 'mastersthesis',
     'techreport', 'proceedings', 'unpublished'
   ];
-  
+
   for (const entry of entries) {
     const entryType = entry.entryType.toLowerCase();
-    
+
     // Check if this is a publication entry
     if (publicationTypes.includes(entryType)) {
       const citationKey = entry.citationKey;
       const filename = `${slugify(citationKey)}.md`;
       const filePath = path.join(PAPERS_DIR, filename);
-      
+
       const frontmatter = generatePaperFrontmatter(entry, content);
       writePaperMarkdown(filePath, frontmatter);
     }
@@ -319,29 +323,29 @@ function main() {
   console.log('='.repeat(60));
   console.log('BibTeX to Markdown Content Generator');
   console.log('='.repeat(60));
-  
+
   // Find all .bib files
   console.log(`\nScanning for .bib files in: ${DATA_DIR}`);
   const bibFiles = findBibFiles(DATA_DIR);
-  
+
   if (bibFiles.length === 0) {
     console.log('\nNo .bib files found!');
     console.log(`Please add .bib files to the ${DATA_DIR} directory.`);
     return;
   }
-  
+
   console.log(`Found ${bibFiles.length} .bib file(s):`);
   bibFiles.forEach(f => console.log(`  - ${path.relative(rootDir, f)}`));
-  
+
   // Process each .bib file for papers
   console.log('\n' + '-'.repeat(60));
   console.log('Generating paper content...');
   console.log('-'.repeat(60));
-  
+
   for (const bibFile of bibFiles) {
     processBibFileForPapers(bibFile);
   }
-  
+
   console.log('\n' + '='.repeat(60));
   console.log('✓ Content generation complete!');
   console.log('='.repeat(60));
