@@ -1,0 +1,171 @@
+@article{kindiroglu2023aligning,
+  title={Aligning accumulative representations for sign language recognition},
+  author={K{\i}nd{\i}roglu, Ahmet Alp and {\"O}zdemir, O{\u{g}}ulcan and Akarun, Lale},
+  journal={Machine Vision and Applications},
+  number={1},
+  pages={12},
+  year={2023},
+  publisher={Springer Berlin Heidelberg},
+  abstract={Accumulative representations provide a method for representing variable-length videos with constant length features. In this study, we present aligned temporal accumulative features (ATAF), a skeleton heatmap-based feature for efficient representation and modeling of isolated sign language videos. Inspired by the movement-hold model in sign linguistics, we extract keyframes, align them using temporal transformer networks (TTNs) and extract descriptors using convolutional neural networks (CNNs). In the proposed approach, the use of aligned keyframes increases the recognition power of accumulative features as linguistically significant parts of signs are represented uniquely. Since we detect keyframes using hand movement, there can be differences from signer to signer. To overcome this challenge, ATAF has been implemented with both alignment of sampled frames and keyframe alignment approaches, using both finger speed differences and hand joint heatmaps to perform end-to-end alignment during classification. Results demonstrate that the proposed method achieves state-of-the-art recognition performance on the public BosphorusSign22k (BSign22k) dataset in combination with 3D-CNNs.},
+  url={https://drive.google.com/file/d/1Yb955Wu4hl95p20I8L-D_0wSZ-1zk5bI/view}
+}
+
+@article{ozdemir2023multi,
+  title={Multi-cue temporal modeling for skeleton-based sign language recognition},
+  author={{\"O}zdemir, O{\u{g}}ulcan and Bayta{\c{s}}, {\.I}nci M and Akarun, Lale},
+  journal={Frontiers in neuroscience},
+  volume={17},
+  pages={1148191},
+  year={2023},
+  publisher={Frontiers Media SA},
+  abstract={Sign languages are visual languages used as the primary communication medium for the Deaf community. The signs comprise manual and non-manual articulators such as hand shapes, upper body movement, and facial expressions. Sign Language Recognition (SLR) aims to learn spatial and temporal representations from the videos of the signs. Most SLR studies focus on manual features often extracted from the shape of the dominant hand or the entire frame. However, facial expressions combined with hand and body gestures may also play a significant role in discriminating the context represented in the sign videos. In this study, we propose an isolated SLR framework based on Spatial-Temporal Graph Convolutional Networks (ST-GCNs) and Multi-Cue Long Short-Term Memorys (MC-LSTMs) to exploit multi-articulatory (e.g., body, hands, and face) information for recognizing sign glosses. We train an ST-GCN model for learning representations from the upper body and hands. Meanwhile, spatial embeddings of hand shape and facial expression cues are extracted from Convolutional Neural Networks (CNNs) pre-trained on large-scale hand and facial expression datasets. Thus, the proposed framework coupling ST-GCNs with MC-LSTMs for multi-articulatory temporal modeling can provide insights into the contribution of each visual Sign Language (SL) cue to recognition performance. To evaluate the proposed framework, we conducted extensive analyzes on two Turkish SL benchmark datasets with different linguistic properties, BosphorusSign22k and AUTSL. While we obtained comparable recognition performance with the skeleton-based state-of-the-art, we observe that incorporating multiple visual SL cues improves the recognition performance, especially in certain sign classes where multi-cue information is vital. The code is available at: https://github.com/ogulcanozdemir/multicue-slr.},
+  url={https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1148191/full}
+}
+
+@inproceedings{girgin2023novel,
+  title={A novel occlusion index},
+  author={Girgin, Emre and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={2023 31st Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2023},
+  organization={IEEE},
+  abstract={Recovery of 3D human pose and shape under realistic conditions is a challenging task. Despite the recent advances in this field, methods suffer from performance degradation due to naturally occurring occlusions. Benchmark datasets employed to compare the performance of methods under occlusion contain different amounts of challenges. Therefore, assessing the quantitative performance of the benchmarks turns into an equally important task. In this study, we propose a novel metric called the Occlusion Index (OI) to evaluate the severity of occlusion for benchmarks. OI enables the evaluation of the amount of occlusion and partitioning of the benchmark images into subsets according to the severity of the occlusion. We provide occlusion benchmarks obtained from widely-utilized datasets, OCHuman and AGORA, and show that they enable better evaluation of the occlusion robust techniques.},
+  url={https://ieeexplore.ieee.org/abstract/document/10223983}
+}
+
+@article{bicici2024multi,
+  title={Multi-path routing for conditional information gain trellis using cross-entropy search and reinforcement learning},
+  author={Bicici, Ufuk Can and Akarun, Lale},
+  journal={IEEE Access},
+  volume={12},
+  pages={66319--66334},
+  year={2024},
+  publisher={IEEE},
+  abstract={Convolutional neural networks have made significant strides in solving computer-vision tasks at the expense of high computational demands. This complexity hinders efficient processing, particularly on devices with limited computational resources such as edge devices. One way to overcome this limitation is conditional computing, which optimizes inference by selectively utilizing parts of the network depending on the characteristics of the input. A recent conditional execution method is Conditional Information Gain Trellis (CIGT), which routes samples based on an information gain-based router mechanism. The original CIGT model was designed to route a single sample along a single path in a trellis structure. In this study, advanced inference strategies that allow inputs to traverse multiple paths are proposed to improve the performance of the vanilla CIGT model. These strategies aim to find a middle ground between improved model performance and increased computational demands. For this purpose, two techniques were proposed: A Cross-Entropy Search-based threshold optimization algorithm and a Reinforcement Learning-based routing strategy. The first method treats multi-path routing in CIGT as a black-box optimization problem and the second interprets it as a Markov Decision Process with a Q-Learning-based supervised regression algorithm designed as the solution. It has been shown that both of these methods provide significant performance improvements compared to the original CIGT model, with an adjustable increase in the computation. Experiments were conducted on two image datasets, with additional statistical tests and analyses to inspect the behaviors of the proposed algorithms. The novel methods designed in this study for multi-path routing show potential for both the original CIGT model and similar conditional computation approaches that use specific routing mechanisms for selecting network parts based on samples.},
+  url={https://ieeexplore.ieee.org/abstract/document/10510299}
+}
+
+@inproceedings{ozccelik2024self,
+  title={Self-Supervised Dense Visual Representation Learning},
+  author={{\"O}z{\c{c}}el{\.I}k, Timoteos Onur and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={2024 32nd Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2024},
+  organization={IEEE},
+  abstract={Self-supervised representation learning has shown promising results in recent years. However, most of the proposed methods are pre-trained on object-centric datasets with image-level pretext tasks. In this study, we follow DenseCL, which is pre-trained on pixel-level scene-centric datasets with contrastive learning. Our goal is to alleviate the false negative pairing problem in contrastive learning by consistency regularization. Our method outperforms DenseCL and PixContrast models in most of the scenarios. In PASCAL VOC object detection, we see 0.2% AP50 and 0.3% AP improvements. In COCO object detection, we get 0.3% AP and 0.7% AP boosts. We also improve by 0.4% AP and 0.6% AP in COCO instance segmentation, and 0.1% mAP and 0.9% mAP in PASCAL VOC semantic segmentation. Moreover, attention map visualization and k-nearest neighbour retrieval indicate qualitative improvement from the proposed method.},
+  url={https://ieeexplore.ieee.org/abstract/document/10600771}
+}
+
+@inproceedings{kantarci2024novel,
+  title={A novel part-based benchmark for 3D object reconstruction},
+  author={Kantarc{\i}, Merve G{\"u}l and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={2024 32nd Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2024},
+  organization={IEEE},
+  abstract={Numerous deep learning-based methods have been proposed for achieving high accuracy in 3D object reconstruction. However, when examining the recent models, we observe that their performances are very close. We claim that more detailed evaluation methods are needed to broaden the comparisons and allow new research directions. Accordingly, in this study, we propose a novel benchmark to evaluate at the part level over three state-of-the-art reconstruction models using the novel rich dataset, 3DCoMPaT++. To evaluate holistic shape reconstruction outputs at the part level, the Part F-Score metric is proposed. Adapting a dataset proposed from a close domain is important for enabling new data to 3D object reconstruction applications and for guiding new adaptations.},
+  url={https://ieeexplore.ieee.org/abstract/document/10600720}  
+}
+
+@inproceedings{ozdemir2024hand,
+  title={Hand graph topology selection for skeleton-based sign language recognition},
+  author={{\"O}zdemir, O{\u{g}}ulcan and Bayta{\c{s}}, {\.I}nci M and Akarun, Lale},
+  booktitle={2024 IEEE 18th International Conference on Automatic Face and Gesture Recognition (FG)},
+  pages={1--5},
+  year={2024},
+  organization={IEEE},
+  abstract={State-of-the-art Sign Language Recognition (SLR) frameworks based on Graph Convolutional Networks (GCNs) require a skeleton-based graph topology. Although upper body skeleton configuration is often considered, Sign Languages (SLs) mainly comprises hand shapes, upper body movements, and facial gestures. Notably, the hand plays a major role in performing the sign. This paper investigates optimal choices for the hand graph topology essential for improving the recognition performance. Our experiments on two benchmark Turkish SL datasets, BosphorusSign22k and AUTSL, demonstrate that hand-based topology substantially contributes to performance that is competitive with full body-based topologies.},
+  url={https://ieeexplore.ieee.org/abstract/document/10581950}
+}
+
+@inproceedings{kindiroglu2024transfer,
+  title={Transfer learning for cross-dataset isolated sign language recognition in under-resourced datasets},
+  author={Kindiroglu, Ahmet Alp and Kara, Ozgur and Ozdemir, Ogulcan and Akarun, Lale},
+  booktitle={2024 IEEE 18th International Conference on Automatic Face and Gesture Recognition (FG)},
+  pages={1--8},
+  year={2024},
+  organization={IEEE},
+  abstract={Sign language recognition (SLR) has recently achieved a breakthrough in performance thanks to deep neural networks trained on large annotated sign datasets. Of the many different sign languages, these annotated datasets are only available for a select few. Since acquiring gloss-level labels on sign language videos is difficult, learning by transferring knowledge from existing annotated sources is useful for recognition in under-resourced sign languages. This study provides a publicly available cross-dataset transfer learning benchmark from two existing public Turkish SLR datasets. We use a temporal graph convolution-based sign language recognition approach to evaluate five supervised transfer learning approaches and experiment with closed-set and partial-set cross-dataset transfer learning. Experiments demonstrate that improvement over finetuning based transfer learning is possible with specialised supervised transfer learning methods.},
+  url={https://ieeexplore.ieee.org/abstract/document/10582029}
+}
+
+@article{bicici2024conditional,
+  title={Conditional information gain trellis},
+  author={Bicici, Ufuk Can and Meral, Tuna Han Salih and Akarun, Lale},
+  journal={Pattern Recognition Letters},
+  volume={184},
+  pages={212--218},
+  year={2024},
+  publisher={Elsevier},
+  abstract={Conditional computing processes an input using only part of the neural network’s computational units. Learning to execute parts of a deep convolutional network by routing individual samples has several advantages: This can facilitate the interpretability of the model, reduce the model complexity, and reduce the computational burden during training and inference. Furthermore, if similar classes are routed to the same path, that part of the network learns to discriminate between finer differences and better classification accuracies can be attained with fewer parameters. Recently, several papers have exploited this idea to select a particular child of a node in a tree-shaped network or to skip parts of a network. In this work, we follow a Trellis-based approach for generating specific execution paths in a deep convolutional neural network. We have designed routing mechanisms that use differentiable information gain-based cost functions to determine which subset of features in a convolutional layer will be executed. We call our method Conditional Information Gain Trellis (CIGT). We show that our conditional execution mechanism achieves comparable or better model performance compared to unconditional baselines, using only a fraction of the computational resources. We provide our code and model checkpoints used in the paper at: https://github.com/ufukcbicici/cigt/tree/prl/prl_scripts.},
+  url={https://www.sciencedirect.com/science/article/pii/S0167865524001880}
+}
+
+@inproceedings{girgin2024detection,
+  title={Detection and quantification of occlusion for 3d human pose and shape estimation},
+  author={Girgin, Emre and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={International Conference on Pattern Recognition},
+  pages={368--382},
+  year={2024},
+  organization={Springer},
+  abstract={Occlusion is a formidable challenge for computer vision tasks that involve the 3D modeling of humans from a single image. Human bodies are subject to occlusion by other human beings, their own body parts, or other objects in the scene. To evaluate the robustness of models under occlusion, studies often report performance on data that contains occlusion. However, the detection and quantification of occlusion has not been studied; leading to the use of ad-hoc methods for creating these occlusion subsets. In this paper, we introduce Silhouette Occlusion Index (SOI), an objective measure designed to quantify occlusion in the context of 3D Human Pose and Shape (HPS) tasks, relying solely on SMPL and camera parameters. Further, with the recognition that different body regions contain varying amounts of information about the human pose, we quantify occlusion of different body parts separately, to enable the analysis of most difficult occlusions and to assign varying weights accordingly. Lastly, we used a per body segment occlusion score to scale the error on each body segment, penalizing the error on visible segments, which we call the Visible MPJPE. To demonstrate the superiority of our methodology, we ranked samples from two popular datasets, 3DPW and AGORA, according to their occlusion amount. The subsets formed using SOI proved more challenging for state-of-the-art 3D HPS methods, reaffirming the effectiveness and precision of SOI in quantifying and selecting challenging occlusion scenarios. (Our source code and benchmark are publicly available at github.com/egirgin/occlusionIndex.)},
+  url={https://link.springer.com/chapter/10.1007/978-3-031-87660-8_27}
+}
+
+@article{kantarci2025unveiling,
+  title={Unveiling limitations of 3D object reconstruction models through a novel benchmark},
+  author={Kantarc{\i}, Merve G{\"u}l and G{\"o}kberk, Berk and Akarun, Lale},
+  journal={Signal, Image and Video Processing},
+  volume={19},
+  number={1},
+  pages={45},
+  year={2025},
+  publisher={Springer},
+  abstract={The availability of ShapeNet, a dataset with vast numbers of 3D objects, has led to the development of successful 3D reconstruction models. However, evaluation against similar datasets that measure aspects closely related to ShapeNet is often misleading. We propose a novel benchmark to tackle this assessment problem. We selected three state-of-the-art models for comparison: The voxel-based 3D-C2FT, Pix2Vox, and occupancy function based Occupancy Networks to demonstrate the effectiveness of our benchmark. We adapted a novel dataset, 3DCoMPaT++, which offers rich material and part annotations for the evaluation of 3D reconstructions. We assessed the reconstruction performance by changing viewpoints and varying styles in 2D input images. The results show that models struggle to adapt to novel settings. We also evaluated models at the part level to identify the most challenging parts. We propose Part F1-Score@0.01 for evaluation. Our experiments show quantitatively that performance degrades drastically and the methods perform poorly in finer details and thin parts.},
+  url={https://link.springer.com/article/10.1007/s11760-024-03663-7}
+}
+
+@article{ozdemir2025cross,
+  title={Cross attentive multi-cue fusion for skeleton-based sign language recognition},
+  author={Ozdemir, Ogulcan and Baytas, Inci M and Akarun, Lale},
+  journal={IEEE Access},
+  year={2025},
+  publisher={IEEE},
+  abstract={Sign language, the primary communication medium of the Deaf, uses visual cues from upper body, hands, and face. Sign Language Recognition (SLR) aims to learn salient representations from these cues to bridge the communication gap between Deaf and hearing communities. Existing Graph Neural Network-based SLR frameworks often represent sign videos as sequences of graphs formed by hand and body joints. However, relying solely on upper body topology often results in suboptimal solutions. This work shows that incorporating domain-specific hand topologies can single-handedly help reach state-of-the-art SLR performance. This motivates the need for fusing multiple visual cues to build robust and generalizable SLR frameworks. Yet, the fusion process is challenged by changing spatial and temporal dynamics across articulators. To address this, we propose a multi-cue cross-attention framework that enables interactions between hand and upper body cues during fusion. We demonstrate how the proposed attention-based framework exposes distinct temporal patterns of visual cue representations extracted via Spatio-Temporal Graph Convolutional Network (ST-GCN) and exploits them for learning SL representations more effectively. Our experiments on two benchmark isolated sign language datasets, BosphorusSign22k and AUTSL, show that our proposed framework is on par with state-of-the-art performance on isolated SLR while highlighting the benefit of choosing domain-specific hand graph topologies and fusing multiple cues for SLR. Furthermore, our cross-attentive approach for fusion of upper-body and hand cues improves recognition accuracy by around 1% and 3% on the respective datasets over hand-only models while making the recognition interpretable and demonstrating the complementary interactions between visual cues.},
+  url={https://ieeexplore.ieee.org/abstract/document/11032083}
+}
+
+@inproceedings{csero2025turkish,
+  title={Turkish Sign Language Recognition Through Self-Supervised Learning Features and Heatmap},
+  author={{\c{S}}ero, Onur and {\"O}zdemir, O{\u{g}}ulcan and Akarun, Lale},
+  booktitle={2025 33rd Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2025},
+  organization={IEEE},
+  abstract={Sign Language Recognition (SLR) poses a significant challenge due to its complexity and variability. Sign languages (SLs) rely on hand gestures, upper body movements, and facial expressions to convey meaning. Deep learning models have been effectively applied in the field of SLR. In this study, we propose a model that includes Self-Supervised Learning (SSL) features and a heatmap to recognize isolated Turkish Sign Language videos in the BosphorusSign22k dataset. The SSL approach, DINO, is used to extract features of hand gestures and facial expressions, whereas the heatmap-based technique focuses on upper body movement. While hand gestures include most of the sign information, adding facial expressions and upper body posture increased the performance significantly. In our experiments, we observed that similar or even better representations can be extracted from sign language videos by just using SSL approaches rather than hand and face-specific methods.},
+  url={https://ieeexplore.ieee.org/abstract/document/11111917}
+}
+
+@inproceedings{ozccibik2025restoring,
+  title={Restoring Degraded Receipt Images with Generative Approach},
+  author={{\"O}z{\c{c}}{\i}b{\i}k, Onur Sefa and Akarun, Lale},
+  booktitle={2025 33rd Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2025},
+  organization={IEEE},
+  abstract={Optical Character Recognition (OCR) technologies play a crucial role in processes such as document processing and expense management. Since receipts can easily fade, OCR-based automation often leads to the need for manual corrections. This results in additional time spent by employees and extra costs. Without proper oversight, these issues can cause significant problems in accounting. Therefore, we propose a model to correct degraded documents using a generative AI framework based on transformer architecture. The experiments show that the proposed model provides significant improvements and enhances OCR results.},
+  url={https://ieeexplore.ieee.org/abstract/document/11112159}
+}
+
+@article{ozccelik2025strategies,
+  title={Strategies to address the false-negative pairing problem in contrastive learning},
+  author={{\"O}z{\c{c}}elik, Timoteos Onur and G{\"o}kberk, Berk and Akarun, Lale},
+  journal={Signal, Image and Video Processing},
+  volume={19},
+  number={10},
+  pages={811},
+  year={2025},
+  publisher={Springer},
+  abstract={The availability of ShapeNet, a dataset with vast numbers of 3D objects, has led to the development of successful 3D reconstruction models. However, evaluation against similar datasets that measure aspects closely related to ShapeNet is often misleading. We propose a novel benchmark to tackle this assessment problem. We selected three state-of-the-art models for comparison: The voxel-based 3D-C2FT, Pix2Vox, and occupancy function based Occupancy Networks to demonstrate the effectiveness of our benchmark. We adapted a novel dataset, 3DCoMPaT++, which offers rich material and part annotations for the evaluation of 3D reconstructions. We assessed the reconstruction performance by changing viewpoints and varying styles in 2D input images. The results show that models struggle to adapt to novel settings. We also evaluated models at the part level to identify the most challenging parts. We propose Part F1-Score@0.01 for evaluation. Our experiments show quantitatively that performance degrades drastically and the methods perform poorly in finer details and thin parts.},
+  url={https://link.springer.com/article/10.1007/s11760-024-03663-7}
+}
