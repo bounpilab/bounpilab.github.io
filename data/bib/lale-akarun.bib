@@ -1,3 +1,70 @@
+@article{bicici2021conditional,
+  title={Conditional information gain networks as sparse mixture of experts},
+  author={Bicici, Ufuk Can and Akarun, Lale},
+  journal={Pattern Recognition},
+  volume={120},
+  pages={108151},
+  year={2021},
+  publisher={Elsevier},
+  abstract={Deep neural network models owe their representational power and high performance in classification tasks to the high number of learnable parameters. Running deep neural network models in limited-resource environments is a problematic task. Models employing conditional computing aim to reduce the computational burden while retaining model performance on par with more complex neural network models. This paper, proposes a new model, Conditional Information Gain Networks as Sparse Mixture of Experts (sMoE-CIGNs). A CIGN model is a neural tree that allows conditionally skipping parts of the tree based on routing mechanisms inserted into the architecture. These routing mechanisms are based on differentiable Information Gain objectives. CIGN groups semantically similar samples in the leaves, enabling simpler classifiers to focus on differentiating between similar classes. This lets the CIGN model attain high classification performances with lighter models. We further improve the basic CIGN model by proposing a sparse mixture of experts model for difficult to classify samples that may get routed to suboptimal branches. If a sample has routing confidence higher than a specific threshold, the sample may be routed towards multiple child nodes. The classification decision can then be taken as a mixture of these expert decisions. We learn the optimal routing thresholds by Bayesian Optimization over a validation set by minimizing a weighted loss, including the classification accuracy and the number of multiplication and accumulations (MAC). We show the effectiveness of the CIGN models enhanced with the Sparse Mixture of Experts approach with extensive tests on MNIST, Fashion MNIST, CIFAR 100 and UCI-USPS datasets, as well as comparisons with methods from the literature. sMoE-CIGN models can retain high generalization performance, on par with a thick unconditional model while keeping the operation burden at the same level with a much thinner model.},
+  url={https://www.sciencedirect.com/science/article/abs/pii/S0031320321003381}
+}
+
+@inproceedings{temiz2021turcoins,
+  title={TurCoins: Turkish republic coin dataset},
+  author={Temiz, H{\"u}seyin and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={2021 29th Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2021},
+  organization={IEEE},
+  abstract={In this paper, we present a novel and comprehensive dataset which contains Turkish Republic coins minted since 1924 and present a deep learning based system that can automatically classify coins. The proposed dataset consists of 11080 coin images from 138 different classes. To classify coins, we utilize a pre-trained neural network (ResNet50) which is pre-trained on ImageNet. We train the pre-trained neural networks on our dataset by transfer learning. The imbalanced nature of the dataset causes the classifier to show lower performance in classes with fewer samples. To alleviate the imbalance problem, we propose a StyleGAN2-based augmentation method providing realisticfake coins for rare classes. The dataset will be published in http://turcoins.org.},
+  url={https://ieeexplore.ieee.org/abstract/document/9477957}
+}
+
+@inproceedings{ccelimli2022attention,
+  title={Attention modeling with temporal shift in sign language recognition},
+  author={{\c{C}}elimli, Ahmet Faruk and {\"O}zdemir, O{\u{g}}ulcan and Akarun, Lale},
+  booktitle={2022 30th Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2022},
+  organization={IEEE},
+  abstract={Sign languages are visual languages expressed with multiple cues including facial expressions, upper-body and hand gestures. These different visual cues can be used together or at different instants to convey the message. In order to recognize sign languages, it is crucial to model what, where and when to attend. In this study, we developed a model to use different visual cues at the same time by using Temporal Shift Modules (TSMs) and attention modeling. Our experiments are conducted with BospohorusSign22k dataset. Our system has achieved 92.46% recognition accuracy and improved the performance approximately 14% compared to the baseline study with 78.85% accuracy.},
+  url={https://ieeexplore.ieee.org/abstract/document/9864987}
+}
+
+@inproceedings{kantarci2022survey,
+  title={A survey of 3D object reconstruction methods},
+  author={Kantarci, Merve G{\"u}l and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={2022 30th Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2022},
+  organization={IEEE},
+  abstract={In this work, we provide a state-of-the-art survey of deep learning-based single- and multi-view 3D object reconstruction methods. In a broad sense, 3D reconstruction methods take single or multiple 2D images to model shapes with different representations such as: voxels, meshes, point clouds and implicit functions. In this paper, the methods are grouped based on their shape representations and are presented in detail with their deep neural network architectures, supervision mechanisms and reconstruction accuracies on benchmark datasets.},
+  url={https://ieeexplore.ieee.org/abstract/document/9864922}
+}
+
+@inproceedings{eryilmaz2022weakly,
+  title={Weakly Supervised Blur Assesment and Localization},
+  author={Ery{\i}lmaz, Giray and Akarun, Lale},
+  booktitle={2022 30th Signal Processing and Communications Applications Conference (SIU)},
+  pages={1--4},
+  year={2022},
+  organization={IEEE},
+  abstract={As smart devices become more common, visual media have also become common. Bur is a defect in videos and photographs taken with non-professional setups. In this study, we work on measuring and assessing the intensity of blur images have.},
+  url={https://ieeexplore.ieee.org/abstract/document/9864883}
+}
+
+@inproceedings{atici2022detection,
+  title={Detection of free-standing conversational groups with graph convolutional networks},
+  author={At{\i}c{\i}, Efehan and G{\"o}kberk, Berk and Akarun, Lale},
+  booktitle={2022 26th International Conference on Pattern Recognition (ICPR)},
+  pages={1041--1047},
+  year={2022},
+  organization={IEEE},
+  abstract={Automatically detecting conversational groups from video footage is an important research area with applications in social robotics, human-computer interaction, and video analysis. In this paper, we use a novel approach based on Graph Convolutional Networks (GCN) for the social group detection problem. We base our approach on a method from the community detection domain called Deep Modularity Networks (DMoN). As an input to the DMoN method, we construct a graph representation using body view frustums, which indicates affinities among the individuals. In addition to the frame-level group detector, the proposed system utilizes temporal information to improve the group detection accuracy. Experiments conducted on the standard benchmark dataset SALSA confirm that our GCN-based approach improves the group detection quality over state-of-the-art group detection methods.},
+  url={https://ieeexplore.ieee.org/abstract/document/9956536}
+}
+
 @article{kindiroglu2023aligning,
   title={Aligning accumulative representations for sign language recognition},
   author={K{\i}nd{\i}roglu, Ahmet Alp and {\"O}zdemir, O{\u{g}}ulcan and Akarun, Lale},
