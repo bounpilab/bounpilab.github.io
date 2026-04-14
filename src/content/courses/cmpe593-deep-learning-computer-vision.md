@@ -2,7 +2,6 @@
 title: "Deep Learning for Computer Vision"
 code: "CMPE 593"
 description: "Graduate course on applied deep learning for computer vision: convolutional networks, detection, segmentation, generative models, and vision transformers."
-semester: "Fall 2025–2026"
 instructor: "berk-gokberk"
 credits: 3
 syllabus: "https://registration.bogazici.edu.tr/scripts/instructor/coursedescriptions/2025-2026-1/CMPE59301.PDF"
@@ -20,25 +19,6 @@ After successful completion of this course, students will be able to:
 1. Use convolutional neural networks.
 2. Apply deep learning–based computer vision methods to solve problems.
 3. Evaluate the performance of computer vision models.
-
-## Prerequisites
-
-- Fluency in Python or a similar programming language.
-- Knowledge of calculus, linear algebra, probability, and statistics.
-
-## Schedule and location
-
-- **Lectures:** WWW456, **classroom:** BM B5 (see the official syllabus PDF for any updates).
-
-## Assessment
-
-| Component | Weight |
-|-----------|--------|
-| Midterm exam | 40% |
-| Weekly in-class quizzes | 40% |
-| Project | 20% |
-
-Term projects may be completed individually or in teams of at most two students. Late submission is not allowed for term project work. See the official syllabus for course administration, plagiarism, and attendance policies.
 
 ## Topics (tentative)
 

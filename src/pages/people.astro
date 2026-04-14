@@ -55,7 +55,7 @@ const sectionHeadingClass =
 
     <section class="mb-16 max-w-4xl mx-auto">
       <h2 class={sectionHeadingClass}>PhD Students</h2>
-      <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {phdStudents.map(student => (
           <PersonCard entry={student} />
         ))}
@@ -64,7 +64,7 @@ const sectionHeadingClass =
 
     <section class="mb-16 max-w-4xl mx-auto">
       <h2 class={sectionHeadingClass}>MS Students</h2>
-      <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {msStudents.map(student => (
           <PersonCard entry={student} />
         ))}
