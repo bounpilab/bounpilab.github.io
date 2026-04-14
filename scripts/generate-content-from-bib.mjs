@@ -107,6 +107,16 @@ function formatAuthors(authorString) {
     author = author.replace(/\{\\i\}/g, 'ı');
     author = author.replace(/\\i(?=\s|$|,)/g, 'ı');
 
+    // Turkish breve g (ğ/Ğ) often encoded as \u{g}, \u g, or \ug
+    author = author.replace(/\\u\{g\}/g, 'ğ');
+    author = author.replace(/\\u\{G\}/g, 'Ğ');
+    author = author.replace(/\\ug/g, 'ğ');
+    author = author.replace(/\\uG/g, 'Ğ');
+
+    // Turkish dotted capital İ often encoded as \.I or \.{I}
+    author = author.replace(/\\\.\{I\}/g, 'İ');
+    author = author.replace(/\\\.I/g, 'İ');
+
     // Remove remaining braces
     author = author.replace(/\{/g, '');
     author = author.replace(/\}/g, '');

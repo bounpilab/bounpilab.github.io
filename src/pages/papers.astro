@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
+import { normalizeTurkishLatex } from '../utils/latex';
 
 // Get all papers and sort by year (descending)
 const papers = await getCollection('papers');
@@ -69,7 +70,7 @@ const defaultYear = years[0];
                   {paper.data.title}
                 </h3>
                 <p class="text-sm text-gray-700 mb-1"><span class="font-semibold">Conference:</span> {paper.data.venue} {year}</p>
-                <p class="text-sm text-gray-700 mb-6"><span class="font-semibold">Authors:</span> {paper.data.authors}</p>
+                <p class="text-sm text-gray-700 mb-6"><span class="font-semibold">Authors:</span> {normalizeTurkishLatex(paper.data.authors)}</p>
 
                 <div class="flex flex-wrap gap-2 justify-end mt-auto">
                   {paper.data.pdf && (
