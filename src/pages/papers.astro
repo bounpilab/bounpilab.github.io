@@ -52,6 +52,14 @@ const defaultYear = years[0];
         ))}
       </div>
 
+      <p
+        id="papers-found-count"
+        class="text-center text-sm text-gray-700 -mt-6 mb-10"
+        aria-live="polite"
+      >
+        {papersByYear[defaultYear].length} {papersByYear[defaultYear].length === 1 ? 'paper' : 'papers'} found
+      </p>
+
       {years.map((year) => (
         <section
           class:list={['paper-year-section mb-12', year !== defaultYear && 'hidden']}
@@ -128,11 +136,21 @@ const defaultYear = years[0];
 
       var buttons = root.querySelectorAll('.year-filter-btn');
       var sections = root.querySelectorAll('.paper-year-section');
+      var countEl = document.getElementById('papers-found-count');
 
       var activeBtn =
         'px-4 py-2 rounded-md border-2 border-primary font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 bg-primary text-white border-primary hover:bg-primary-dark';
       var inactiveBtn =
         'px-4 py-2 rounded-md border-2 border-primary font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 bg-white text-primary border-primary hover:bg-primary/5';
+
+      function updateCount(year) {
+        if (!countEl) return;
+        var activeSection = root.querySelector('.paper-year-section[data-year="' + year + '"]');
+        if (!activeSection) return;
+        var items = activeSection.querySelectorAll('.bg-white.p-6.rounded-lg.shadow-sm.border.border-gray-100');
+        var n = items.length;
+        countEl.textContent = n + ' ' + (n === 1 ? 'paper' : 'papers') + ' found';
+      }
 
       function selectYear(year) {
         sections.forEach(function (sec) {
@@ -144,6 +162,7 @@ const defaultYear = years[0];
           btn.setAttribute('aria-selected', active ? 'true' : 'false');
           btn.className = active ? activeBtn : inactiveBtn;
         });
+        updateCount(year);
       }
 
       buttons.forEach(function (btn) {
@@ -151,6 +170,10 @@ const defaultYear = years[0];
           selectYear(btn.getAttribute('data-year'));
         });
       });
+
+      // Ensure count matches default on first load (in case of dynamic hydration quirks)
+      var defaultSelected = root.querySelector('.year-filter-btn[aria-selected="true"]');
+      if (defaultSelected) updateCount(defaultSelected.getAttribute('data-year'));
     })();
   </script>
 </MainLayout>
