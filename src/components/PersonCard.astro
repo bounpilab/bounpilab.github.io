@@ -37,7 +37,8 @@ if (isPi) {
   deptLine = entry.data.department ?? '';
 }
 
-const emailOk = isValidEmail(entry.data.email);
+const emailOk =
+  isValidEmail(entry.data.email) && entry.data.category !== 'alumni';
 
 const showPiLinks =
   cat === 'pi' &&
@@ -75,9 +76,13 @@ const showPiLinks =
     ) : null}
 
     {emailOk && (
-      <p class="flex items-center gap-1.5 mt-0.5">
+      <a
+        href={`mailto:${entry.data.email}`}
+        class="inline-flex items-center mt-0.5 text-primary-light hover:opacity-75 w-fit"
+        aria-label={`Email ${entry.data.name}`}
+      >
         <svg
-          class="shrink-0 w-4 h-4 text-primary-light"
+          class="shrink-0 w-5 h-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"
@@ -90,13 +95,7 @@ const showPiLinks =
           <rect width="20" height="16" x="2" y="4" rx="2"></rect>
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
         </svg>
-        <a
-          href={`mailto:${entry.data.email}`}
-          class="text-primary-light hover:underline break-all"
-        >
-          {entry.data.email}
-        </a>
-      </p>
+      </a>
     )}
 
     {isPi && (
