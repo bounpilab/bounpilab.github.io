@@ -41,10 +41,10 @@ const emailOk =
   isValidEmail(entry.data.email) && entry.data.category !== 'alumni';
 
 const showPiLinks =
-  cat === 'pi' &&
-  (entry.data.website ||
-    entry.data.googleScholar ||
-    entry.data.github);
+  cat === 'pi' && (entry.data.googleScholar || entry.data.github);
+
+const iconLinkClass =
+  'inline-flex items-center text-primary-light hover:opacity-75';
 ---
 
 <div
@@ -75,27 +75,56 @@ const showPiLinks =
       </div>
     ) : null}
 
-    {emailOk && (
-      <a
-        href={`mailto:${entry.data.email}`}
-        class="inline-flex items-center mt-0.5 text-primary-light hover:opacity-75 w-fit"
-        aria-label={`Email ${entry.data.name}`}
-      >
-        <svg
-          class="shrink-0 w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-        </svg>
-      </a>
+    {(emailOk || entry.data.website) && (
+      <div class="inline-flex items-center gap-2 mt-0.5">
+        {emailOk && (
+          <a
+            href={`mailto:${entry.data.email}`}
+            class={iconLinkClass}
+            aria-label={`Email ${entry.data.name}`}
+          >
+            <svg
+              class="shrink-0 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        )}
+        {entry.data.website && (
+          <a
+            href={entry.data.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={iconLinkClass}
+            aria-label={`${entry.data.name} website`}
+          >
+            <svg
+              class="shrink-0 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </a>
+        )}
+      </div>
     )}
 
     {isPi && (
@@ -122,16 +151,6 @@ const showPiLinks =
 
         {showPiLinks && (
           <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-primary-light">
-            {entry.data.website && (
-              <a
-                href={entry.data.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                Website
-              </a>
-            )}
             {entry.data.googleScholar && (
               <a
                 href={entry.data.googleScholar}
