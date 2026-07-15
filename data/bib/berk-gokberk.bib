@@ -1,3 +1,60 @@
+@inproceedings{alyuz2012robust,
+  title        = {Robust 3D face recognition in the presence of realistic occlusions},
+  author       = {Aly{\"u}z, Ne{\c{s}}e and G{\"o}kberk, Berk and Spreeuwers, Luuk and Veldhuis, Raymond and Akarun, Lale},
+  booktitle    = {2012 5th IAPR International Conference on Biometrics (ICB)},
+  pages        = {111--118},
+  year         = {2012},
+  organization = {IEEE},
+  abstract     = {Facial occlusions pose significant problems for automatic face recognition systems. In this work, we propose a novel occlusion-resistant three-dimensional (3D) facial identification system. We show that, under extreme occlusions due to hair, hands, and eyeglasses, typical 3D face recognition systems exhibit poor performance. In order to deal with occlusions, our proposed system employs occlusion-resistant registration, occlusion detection, and regional classifiers. A two-step registration module first detects the nose region on the curvedness-weighted convex shape index map, and then performs fine alignment using nose-based Iterative Closest Point (ICP) algorithm. Occluded areas are determined automatically via a generic face model. After non-facial parts introduced by occlusions are removed, a variant of Gappy Principal Component Analysis (Gappy PCA) is used to restore the full face from occlusion-free facial surfaces. Experimental results obtained on realistically occluded facial images from the Bosphorus 3D face database shows that, with the use of score-level fusion of regional Linear Discriminant Analysis (LDA) classifiers, the proposed method improves rank-1 identification accuracy significantly: from 76.12% to 94.23%.},
+  url          = {https://ieeexplore.ieee.org/abstract/document/6199767}
+}
+
+@inproceedings{peng2012evaluation,
+  title        = {An evaluation of super-resolution for face recognition},
+  author       = {Peng, Yuxi and G{\"o}kberk, Berk and Spreeuwers, Luuk and Veldhuis, Raymond},
+  booktitle    = {33rd WIC Symposium on Information Theory in the Benelux and the 2nd Joint WIC/IEEE Symposium on Information Theory and Signal Processing in the Benelux 2012},
+  pages        = {36--43},
+  year         = {2012},
+  organization = {Werkgemeenschap voor Informatie-en Communicatietheorie (WIC)},
+  abstract     = {We evaluate the performance of face recognition algorithms on images at various resolutions. Then we show to what extent super-resolution (SR) methods can improve the recognition performance when comparing low-resolution (LR) to high-resolution (HR) facial images. Our experiments use both synthetic data (from the FRGC v1.0 database) and surveillance images (from the SCface database). Three face recognition methods are used, namely Principal Component Analysis (PCA), Linear Discriminant Analysis (LDA) and Local Binary Patterns (LBP). Two SR methods are evaluated. The first method learns the mapping between LR images and the corresponding HR images using a regression model. As a result, the reconstructed SR images are close to the HR images that belong to the same subject and far away from others. The second method compares LR and HR facial images without explicitly constructing SR images. It finds a coherent feature space where the correlation of LR and HR is maximum, and then compute the mapping from LR to HR in this feature space. The performance of the two SR methods are compared to that delivered by the standard face recognition without SR. The results show that LDA is mostly robust to resolution changes while LBP is not suitable for the recognition of LR images. SR methods improve the recognition accuracy when downsampled images are used and the first method provides better results than the second one. However, the improvement for realistic LR surveillance images remains limited.},
+  url          = {https://research.utwente.nl/en/publications/an-evaluation-of-super-resolution-for-face-recognition/}
+}
+
+@inproceedings{alyuz2012adaptive,
+  title        = {Adaptive registration for occlusion robust 3D face recognition},
+  author       = {Alyuz, Nese and Gokberk, Berk and Akarun, Lale},
+  booktitle    = {European Conference on Computer Vision},
+  pages        = {557--566},
+  year         = {2012},
+  organization = {Springer},
+  abstract     = {Occlusions over facial surfaces cause performance degradation for face registration and recognition systems. In this work, we propose an occlusion-resistant three-dimensional face registration method. First, the nose area is detected on a probe face using curvedness-weighted convex shape index map. Then, probable eye and mouth patches are detected and checked for validity. An adaptive model is constructed by selecting valid patches of the average face model. Finally, registration is handled with the Iterative Closest Point algorithm, where the adaptive model is used as the reference. The UMB-DB face database is used to evaluate the registration system: The nose detector has 100% and 93.90% accuracy, for the non-occluded and occluded images, respectively. A simple global depth-based recognition experiment is done to evaluate the registration performance: Our adaptive model-based registration scheme improves rank-1 recognition rate by 16%, when compared with the nose-based alignment approach.},
+  url          = {https://link.springer.com/chapter/10.1007/978-3-642-33885-4_56}
+}
+
+@inproceedings{peng2013comparison,
+  title        = {Comparison of super-resolution benefits for downsampled iages and real low-resolution data},
+  author       = {Peng, Yuxi and Spreeuwers, Luuk and G{\"o}kberk, Bert and Veldhuis, Raymond},
+  booktitle    = {34th WIC Symposium on Information Theory in the Benelux 2013},
+  pages        = {244--251},
+  year         = {2013},
+  organization = {Werkgemeenschap voor Informatie-en Communicatietheorie (WIC)},
+  abstract     = {Recently, more and more researchers are exploring the benefits of super-resolution methods on low-resolution face recognition. However, often results presented are obtained on downsampled high-resolution face images. Because downsampled images are different from real images taken at low resolution, it is important to include real surveillance data. In this paper, we investigate the difference between downsampled images and real surveillance data in two aspects: (1) the influence of resolution on face recognition accuracy, and (2) the improvement of accuracy that can be achieved by super-resolution on these images. Specifically, we will test the following hypotheses: (1) face recognition performance on real images is much worse than on downsampled images, and (2) super-resolution improves the performance of downsampled images more than real images. Our experiments are conducted using videos from the HumanID database. In each video, the target person’s face is captured while he is walking towards the surveillance camera. We detect the faces in the video frames using a Viola-Jones face detector. Then we select face images of four different resolutions: two low-resolution and two high-resolution. The high-resolution images are used for gallery and generating downsampled images. We perform two types of face recognition experiments. In the first type of experiments, three face recognition methods are evaluated for images with different resolution. The three methods are (1) Principal Component Analysis, (2) Linear Discriminant Analysis, and (3) Local Binary Patterns. In the second type, we apply two super-resolution methods: (1) a model based method and (2) a feature based method on the low-resolution (both real and downsampled) images and then compute the face recognition accuracy.},
+  url          = {https://research.utwente.nl/en/publications/comparison-of-super-resolution-benefits-for-downsampled-iages-and/}
+}
+
+@article{alyuz20133,
+  title     = {3-D face recognition under occlusion using masked projection},
+  author    = {Alyuz, Nese and Gokberk, Berk and Akarun, Lale},
+  journal   = {IEEE Transactions on Information Forensics and Security},
+  volume    = {8},
+  number    = {5},
+  pages     = {789--802},
+  year      = {2013},
+  publisher = {IEEE},
+  abstract  = {With advances in sensor technology, the three-dimensional (3-D) face has become an emerging biometric modality, preferred especially in high security applications. However, dealing with occlusions covering the facial surface is a great challenge, which should be handled to enable applicability to fully automatic security systems. In this paper, we propose a fully automatic 3-D face recognition system which is robust to occlusions. We basically consider two problems: 1) occlusion handling for surface registration, and 2) missing data handling for classification based on subspace analysis techniques. For the alignment problem, we employ an adaptively-selected-model-based registration scheme, where a face model is selected for an occluded face such that only the valid nonoccluded patches are utilized. After registering to the model, occlusions are detected and removed. In the classification stage, a masking strategy, which we call masked projection, is proposed to enable the use of subspace analysis techniques with incomplete data. Furthermore, a regional scheme suitable for occlusion handling is incorporated in classification to improve the overall results. Experimental results on two databases with realistic facial occlusions, namely, the Bosphorus and the UMB-DB, are reported. Experimental results confirm that registration based on the adaptively selected model together with the masked subspace analysis classification offer an occlusion robust face recognition system.},
+  url       = {https://ieeexplore.ieee.org/abstract/document/6491470}
+}
+
 @misc{akkermans2014robust,
   title     = {Robust biometric feature extraction with and without reference point},
   author    = {Akkermans, Antonius Hermanus Maria and Boughorbel, Sabri and Breebaart, Dirk Jeroen and Bruekers, Alphons Antonius Maria Lambertus and Gokberk, Berk and De Groot, Koen Theo Johan and Kelkboom, Emile Josephus Carlos and Kevenaar, Thomas Andreas Maria and Lemma, Aweke Negash},

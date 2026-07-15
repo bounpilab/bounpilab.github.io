@@ -1,0 +1,20 @@
+---
+title: "An evaluation of super-resolution for face recognition"
+authors: "Yuxi Peng, Berk Gökberk, Luuk Spreeuwers, Raymond Veldhuis"
+venue: "33rd WIC Symposium on Information Theory in the Benelux and the 2nd Joint WIC/IEEE Symposium on Information Theory and Signal Processing in the Benelux 2012"
+year: 2012
+abstract: "We evaluate the performance of face recognition algorithms on images at various resolutions. Then we show to what extent super-resolution (SR) methods can improve the recognition performance when comparing low-resolution (LR) to high-resolution (HR) facial images. Our experiments use both synthetic data (from the FRGC v1.0 database) and surveillance images (from the SCface database). Three face recognition methods are used, namely Principal Component Analysis (PCA), Linear Discriminant Analysis (LDA) and Local Binary Patterns (LBP). Two SR methods are evaluated. The first method learns the mapping between LR images and the corresponding HR images using a regression model. As a result, the reconstructed SR images are close to the HR images that belong to the same subject and far away from others. The second method compares LR and HR facial images without explicitly constructing SR images. It finds a coherent feature space where the correlation of LR and HR is maximum, and then compute the mapping from LR to HR in this feature space. The performance of the two SR methods are compared to that delivered by the standard face recognition without SR. The results show that LDA is mostly robust to resolution changes while LBP is not suitable for the recognition of LR images. SR methods improve the recognition accuracy when downsampled images are used and the first method provides better results than the second one. However, the improvement for realistic LR surveillance images remains limited."
+url: "https://research.utwente.nl/en/publications/an-evaluation-of-super-resolution-for-face-recognition/"
+featured: false
+bibtex: |
+  @inproceedings{peng2012evaluation,
+    title        = {An evaluation of super-resolution for face recognition},
+    author       = {Peng, Yuxi and G{\"o}kberk, Berk and Spreeuwers, Luuk and Veldhuis, Raymond},
+    booktitle    = {33rd WIC Symposium on Information Theory in the Benelux and the 2nd Joint WIC/IEEE Symposium on Information Theory and Signal Processing in the Benelux 2012},
+    pages        = {36--43},
+    year         = {2012},
+    organization = {Werkgemeenschap voor Informatie-en Communicatietheorie (WIC)},
+    abstract     = {We evaluate the performance of face recognition algorithms on images at various resolutions. Then we show to what extent super-resolution (SR) methods can improve the recognition performance when comparing low-resolution (LR) to high-resolution (HR) facial images. Our experiments use both synthetic data (from the FRGC v1.0 database) and surveillance images (from the SCface database). Three face recognition methods are used, namely Principal Component Analysis (PCA), Linear Discriminant Analysis (LDA) and Local Binary Patterns (LBP). Two SR methods are evaluated. The first method learns the mapping between LR images and the corresponding HR images using a regression model. As a result, the reconstructed SR images are close to the HR images that belong to the same subject and far away from others. The second method compares LR and HR facial images without explicitly constructing SR images. It finds a coherent feature space where the correlation of LR and HR is maximum, and then compute the mapping from LR to HR in this feature space. The performance of the two SR methods are compared to that delivered by the standard face recognition without SR. The results show that LDA is mostly robust to resolution changes while LBP is not suitable for the recognition of LR images. SR methods improve the recognition accuracy when downsampled images are used and the first method provides better results than the second one. However, the improvement for realistic LR surveillance images remains limited.},
+    url          = {https://research.utwente.nl/en/publications/an-evaluation-of-super-resolution-for-face-recognition/}
+  }
+---
