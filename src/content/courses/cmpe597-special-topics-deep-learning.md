@@ -7,12 +7,15 @@ syllabus: "https://registration.bogazici.edu.tr/scripts/instructor/coursedescrip
 featured: true
 ---
 
-## Topics (official, summarized)
+## Learning Outcomes
 
-- Multilayer perceptron
-- Training deep networks and optimization
-- Convolutional neural networks
-- Sequence modeling (RNNs, transformers)
-- Graph neural networks
-- Auto-encoders
-- Deep generative models (VAEs, GANs, diffusion models)
+The objective of this course is to provide the foundations of neural networks and introduce common deep learning models. Upon successful completion of the course, students are expected to gain an understanding of the following:
+
+- Fundamentals of learning from data paradigm
+- Perceptron and multilayer perceptron
+- Back-propagation algorithm
+- Optimization techniques in deep learning
+- Training neural networks, parameter tuning
+- Deep network architecture design
+- Convolutional neural networks, recurrent neural networks, auto-encoders, and deep generative models
+- Some popular applications of deep models
