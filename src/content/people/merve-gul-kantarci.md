@@ -1,10 +1,11 @@
 ---
 name: "Merve Gül Kantarcı"
-title: "Alumnus"
+title: "MS"
 photo: ""
 bio: ""
 category: "alumni"
 order: 51
+graduationYear: 2024
 advisor: "."
 ---
 

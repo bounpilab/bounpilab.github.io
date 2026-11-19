@@ -1,7 +1,8 @@
 ---
 name: "Oğulcan Özdemir"
-title: "Alumnus"
+title: "PhD"
 category: "alumni"
 order: 999
+graduationYear: 2025
 ---
 

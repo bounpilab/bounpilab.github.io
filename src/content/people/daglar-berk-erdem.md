@@ -1,7 +1,8 @@
 ---
 name: "Dağlar Berk Erdem"
-title: "Alumnus"
+title: "MS"
 category: "alumni"
 order: 999
+graduationYear: 2025
 ---
 

@@ -29,12 +29,18 @@ const profileHref = `${import.meta.env.BASE_URL}people/${entry.slug}`;
 
 const cat = entry.data.category;
 const isPi = cat === 'pi';
+const isAlumni = cat === 'alumni';
 let deptLine = '';
 let titleLine = '';
 
 if (isPi) {
   titleLine = entry.data.title ?? '';
   deptLine = entry.data.department ?? '';
+} else if (isAlumni) {
+  titleLine = entry.data.title ?? '';
+  if (titleLine && entry.data.graduationYear) {
+    titleLine += ` (${entry.data.graduationYear})`;
+  }
 }
 
 const emailOk =
@@ -63,7 +69,7 @@ const iconLinkClass =
       {entry.data.name}
     </h3>
 
-    {isPi && titleLine ? (
+    {(isPi || isAlumni) && titleLine ? (
       <div class="text-gray-700 font-medium text-xs sm:text-sm leading-snug">
         <p>{titleLine}</p>
       </div>
