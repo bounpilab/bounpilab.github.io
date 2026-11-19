@@ -7,11 +7,12 @@ syllabus: "https://registration.bogazici.edu.tr/scripts/instructor/coursedescrip
 featured: true
 ---
 
-## Topics (official, summarized)
+## Learning Outcomes
+
+The objective of this course is to provide the foundations of statistical pattern recognition and its practical use. Upon successful completion of this course, students will have gained the necessary understanding on:
 
 - Bayesian decision theory
-- Parametric and non-parametric techniques
-- Linear discriminant functions
-- Tree methods
-- Clustering and dimensionality reduction
-- Neural networks (incl. intro to deep learning)
+- Parametric techniques and parameter estimation
+- Non-parametric techniques
+- Traditional machine learning models
+- Neural networks and an introduction to deep learning
